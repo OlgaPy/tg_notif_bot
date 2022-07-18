@@ -86,9 +86,9 @@ redis = redis.Redis(
 )
 channel = settings.Redis().subscribe_key
 test_result = {
-    "username": <your_login>,
-    "message": 'Warning: during Power Cycle Test for server: <b>0208200006</b> with motherboard: TEST_MBD\n'
-               'Problem: SEL - Host system DC power is off - OK\n'
+    "username": 'i.ivanov',
+    "message": 'Warning: test is finished with problems. ID: <b>1234567890</b> with name: TEST\n'
+               'Problem: some problem\n'
                '<a href=\"https://www.google.com/\">Results</a>\n'
                '<a href=\"https://www.google.com/\">Progress</a>\n'
                '<a href=\"https://www.google.com/\">Problems</a>'
@@ -108,8 +108,3 @@ We use [SemVer](http://semver.org/) for versioning.
 
 * **[Olga Pykhova](https://github.com/OlgaPy)**
 
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc

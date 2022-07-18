@@ -20,6 +20,7 @@ def safe_try(input_func):
             )
             await message.reply(response)
             logging.info([response, message.from_user.id])
+
     return wrapped
 
 
@@ -28,6 +29,7 @@ def check_login_format(input_func):
     Decorator for checking ms-login format
     :param input_func: reference to async function
     """
+
     async def wrapped(message: aiogram.types.Message, state: aiogram.dispatcher.FSMContext):
         """
         Async function for checking ms-login format
@@ -38,13 +40,14 @@ def check_login_format(input_func):
         ms_login = message.get_args()
         if ms_login and re.search(r"^[a-z]\.[a-z]+$", ms_login, re.M | re.S) is not None:
             success = True
-            await input_func(message,  state)
+            await input_func(message, state)
         else:
             await message.reply(
                 _messages.TgMessages.INCORRECT_LOGIN.value
             )
             logging.info([_messages.TgMessages.INCORRECT_LOGIN.value, message.from_user.id])
         logging.info([f'Checking logins format {ms_login} - {success}', message.from_user.id])
+
     return wrapped
 
 
@@ -53,6 +56,7 @@ def check_delta_send_command(input_func):
     Decorator for checking delta time between sending commands
     :param input_func: reference to async function
     """
+
     async def wrapped(message: aiogram.types.Message, state: aiogram.dispatcher.FSMContext):
         """
         Async function for checking delta between sending commands
@@ -68,7 +72,8 @@ def check_delta_send_command(input_func):
             await input_func(message, state)
         else:
             await message.reply(
-                _messages.TgMessages.DELTA_FAIL.value.format(remaining_time_second=remaining_time_second)
+                _messages.TgMessages.DELTA_FAIL.value.format(
+                    remaining_time_second=remaining_time_second)
             )
             logging.info([_messages.TgMessages.DELTA_FAIL.value, message.from_user.id])
         logging.info([
@@ -77,16 +82,19 @@ def check_delta_send_command(input_func):
             f'Command pause in settings - {settings.TG().command_pause_second} second. ',
             message.from_user.id
         ])
+
     return wrapped
 
 
 @safe_try
-async def handle_start(message: aiogram.types.Message,  state: aiogram.dispatcher.FSMContext) -> None:
+async def handle_start(
+        message: aiogram.types.Message,
+        state: aiogram.dispatcher.FSMContext) -> None:  # pylint: disable=unused-argument
     """Starting the bot and greeting"""
     ms_logins = db_actions.get_ms_logins_by_tg_id(tg_id=message.from_user.id)
     if ms_logins:
         response = _messages.TgMessages.START_KNOWN_USER.value.format(
-                tg_username=message.from_user.username, ms_logins=ms_logins
+            tg_username=message.from_user.username, ms_logins=ms_logins
         )
     else:
         response = _messages.TgMessages.START_UNKNOWN_USER.value
@@ -97,7 +105,9 @@ async def handle_start(message: aiogram.types.Message,  state: aiogram.dispatche
 @check_delta_send_command
 @check_login_format
 @safe_try
-async def handle_del(message: aiogram.types.Message,  state: aiogram.dispatcher.FSMContext) -> None:
+async def handle_del(
+        message: aiogram.types.Message,
+        state: aiogram.dispatcher.FSMContext) -> None:  # pylint: disable=unused-argument
     """Add new user-subscriber by ms-login."""
     ms_login = message.get_args()
     if ms_login in db_actions.get_ms_logins_by_tg_id(tg_id=message.from_user.id):
@@ -112,7 +122,9 @@ async def handle_del(message: aiogram.types.Message,  state: aiogram.dispatcher.
 @check_delta_send_command
 @check_login_format
 @safe_try
-async def handle_add(message: aiogram.types.Message, state: aiogram.dispatcher.FSMContext) -> None:
+async def handle_add(
+        message: aiogram.types.Message,
+        state: aiogram.dispatcher.FSMContext) -> None:  # pylint: disable=unused-argument
     """Add new user-subscriber by ms-login."""
     ms_login = message.get_args()
     if ms_login in db_actions.get_ms_logins_by_tg_id(tg_id=message.from_user.id):

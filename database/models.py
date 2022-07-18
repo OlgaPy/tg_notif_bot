@@ -3,12 +3,12 @@ from peewee import CharField, Model, PrimaryKeyField, BigIntegerField, ForeignKe
 from .db_manager import DBManager
 
 
-class BaseModel(Model):
-    class Meta:
+class BaseModel(Model):  # pylint: disable=too-few-public-methods
+    class Meta:  # pylint: disable=too-few-public-methods
         database = DBManager.database
 
 
-class SystemUsers(BaseModel):
+class SystemUsers(BaseModel):  # pylint: disable=too-few-public-methods
     """
     Table with users at master's system
     """
@@ -16,7 +16,7 @@ class SystemUsers(BaseModel):
     ms_login = CharField(unique=True)
 
 
-class TgUsers(BaseModel):
+class TgUsers(BaseModel):  # pylint: disable=too-few-public-methods
     """
     Table with telegram users
     """
@@ -24,7 +24,7 @@ class TgUsers(BaseModel):
     tg_id = BigIntegerField(unique=True)
 
 
-class Subscriptions(BaseModel):
+class Subscriptions(BaseModel):  # pylint: disable=too-few-public-methods
     """
     Table subscriptions. For comparison users telegram to master system
     """

@@ -35,8 +35,10 @@ class TgMessages(Enum):
     START_UNKNOWN_USER = (
         "\n"
         "Hi. \n "
-        "I'm the bot to send messages about detected problems during test procedures in ms-system. \n"
-        "In order to start getting test results - enter your login to ms with the /add command. \n"
+        "I'm the bot to send messages about detected "
+        "problems during test procedures in ms-system. \n"
+        "In order to start getting test results - "
+        "enter your login to ms with the /add command. \n"
         "For example: \n"
         "/add i.ivanov\n"
     )

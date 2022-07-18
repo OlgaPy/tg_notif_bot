@@ -235,3 +235,6 @@ cython_debug/
 /bot.log
 /telegram/redis_test.py
 /.idea
+/bin
+/lib
+/venv

@@ -3,7 +3,7 @@ from typing import List
 from .models import Subscriptions, TgUsers, SystemUsers
 
 
-def get_tg_ids_by_vat_login(ms_login: str) -> List[int]:
+def get_tg_ids_by_ms_login(ms_login: str) -> List[int]:
     """
     Get all telegram ids subscribers by master system-login
     """

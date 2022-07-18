@@ -234,3 +234,4 @@ cython_debug/
 /database/LocalDB
 /bot.log
 /telegram/redis_test.py
+/.idea

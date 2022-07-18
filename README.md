@@ -14,7 +14,7 @@ Service requires python 3.9 version to run.
 Cloning project from git repository
 
 ```bash
-git clone ...
+git clone https://github.com/OlgaPy/tg_notif_bot.git
 ```
 
 Creating virtual environment for project

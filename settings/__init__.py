@@ -5,5 +5,5 @@ __all__ = [
 ]
 
 from .settings import DataBase
-from .settings import TG
 from .settings import Redis
+from .settings import TG

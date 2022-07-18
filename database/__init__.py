@@ -4,5 +4,6 @@ __all__ = [
     'Subscriptions',
     'DBManager'
 ]
-from .models import TgUsers, SystemUsers, Subscriptions
+
 from .db_manager import DBManager
+from .models import TgUsers, SystemUsers, Subscriptions

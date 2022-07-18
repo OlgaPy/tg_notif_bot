@@ -3,7 +3,8 @@
 # C0116 (missing-function-docstring)
 # W1202 (logging-format-interpolation)
 # W1203 (logging-fstring-interpolation)
-# R0903 (Too few public methods)
+# R0903 (too-few-public-methods)
+# W0703 (broad-except)
 
 [MASTER]
 DISABLE = C0114, C0115, C0116, W1202, W1203

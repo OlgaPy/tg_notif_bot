@@ -48,8 +48,6 @@ def delete_subscription(tg_id: int, ms_login: str) -> None:
         ).
         execute()
     )
-    #TODO: Fix it! Do not put a breakpoint here or on the line above!
-    # Sometimes The contents of the entire table are dropped when running in the debug
 
 
 def add_subscription(tg_id: int, ms_login: str) -> None:
